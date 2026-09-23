@@ -141,13 +141,13 @@ function Admission() {
               ================================================= */}
 
               <iframe
-                title="Noor Virtual Academy Admission Form"
-                src="https://docs.google.com/forms/d/e/YOUR_FORM_ID/viewform?embedded=true"
-                className="google-form-iframe"
-                loading="lazy"
-              >
-                Loading…
-              </iframe>
+  title="Noor Virtual Academy Admission Form"
+  src="https://forms.gle/X6NDmECZD4BBp2xt6"
+  className="google-form-iframe"
+  loading="lazy"
+>
+  Loading…
+</iframe>
 
             </div>
           </div>
