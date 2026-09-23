@@ -1,0 +1,289 @@
+/* =========================================================
+   NOOR VIRTUAL ACADEMY
+   GLOBAL STYLES
+========================================================= */
+
+:root {
+  /* ================= BRAND COLORS ================= */
+
+  --maroon: #800020;
+  --maroon-dark: #65001a;
+  --maroon-deep: #3d0d19;
+
+  --gold: #a9822f;
+  --gold-light: #e6c46a;
+  --gold-soft: #f2dfb8;
+
+  --cream: #fffaf0;
+  --cream-dark: #f8efe1;
+  --cream-deep: #f3e4ca;
+
+  --white: #ffffff;
+
+  /* ================= TEXT COLORS ================= */
+
+  --text-dark: #2d2020;
+  --text-heading: #4a111f;
+  --text: #6d605b;
+  --text-light: #8a7b74;
+
+  /* ================= BORDERS ================= */
+
+  --border: rgba(128, 0, 32, 0.12);
+  --border-gold: rgba(169, 130, 47, 0.35);
+
+  /* ================= SHADOWS ================= */
+
+  --shadow-sm:
+    0 8px 20px rgba(66, 30, 25, 0.06);
+
+  --shadow-md:
+    0 15px 35px rgba(66, 30, 25, 0.09);
+
+  --shadow-lg:
+    0 25px 55px rgba(66, 30, 25, 0.12);
+
+  /* ================= TYPOGRAPHY ================= */
+
+  --font-sans:
+    Inter,
+    "Segoe UI",
+    Roboto,
+    Helvetica,
+    Arial,
+    sans-serif;
+
+  --font-serif:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  /* ================= GENERAL ================= */
+
+  font-family: var(--font-sans);
+
+  color: var(--text-dark);
+  background: var(--cream);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  color-scheme: light;
+}
+
+/* =========================================================
+   RESET
+========================================================= */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  margin: 0;
+  padding: 0;
+
+  scroll-behavior: smooth;
+
+  background: var(--cream);
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+
+  margin: 0;
+  padding: 0;
+
+  background: var(--cream);
+  color: var(--text-dark);
+
+  font-family: var(--font-sans);
+
+  line-height: 1.5;
+}
+
+/* =========================================================
+   ROOT
+========================================================= */
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+
+  text-align: left;
+}
+
+/* =========================================================
+   HEADINGS
+========================================================= */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: 0;
+
+  color: var(--text-heading);
+
+  font-family: var(--font-serif);
+
+  font-weight: 700;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  overflow-wrap: break-word;
+}
+
+/* =========================================================
+   PARAGRAPHS
+========================================================= */
+
+p {
+  margin-top: 0;
+}
+
+/* =========================================================
+   LINKS
+========================================================= */
+
+a {
+  color: inherit;
+}
+
+a,
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+/* =========================================================
+   IMAGES
+========================================================= */
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* =========================================================
+   FORM ELEMENTS
+========================================================= */
+
+button {
+  cursor: pointer;
+}
+
+input,
+textarea,
+select {
+  outline: none;
+}
+
+/* =========================================================
+   ACCESSIBILITY
+========================================================= */
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--gold-light);
+  outline-offset: 3px;
+}
+
+/* =========================================================
+   TEXT SELECTION
+========================================================= */
+
+::selection {
+  background: var(--maroon);
+  color: var(--white);
+}
+
+/* =========================================================
+   SCROLLBAR
+========================================================= */
+
+html {
+  scrollbar-width: thin;
+  scrollbar-color: var(--maroon) var(--cream-dark);
+}
+
+::-webkit-scrollbar {
+  width: 9px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--cream-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--maroon);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--maroon-dark);
+}
+
+/* =========================================================
+   RESPONSIVE TYPOGRAPHY
+========================================================= */
+
+@media (max-width: 1024px) {
+  :root {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 700px) {
+  body {
+    overflow-x: hidden;
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

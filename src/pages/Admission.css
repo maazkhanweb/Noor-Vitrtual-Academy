@@ -1,0 +1,804 @@
+/* =========================================================
+   ADMISSION & FREE TRIAL PAGE
+   Noor Virtual Academy
+   ========================================================= */
+
+.admission-page {
+  width: 100%;
+  overflow: hidden;
+
+  background: #f8f3e8;
+  color: #2b211b;
+}
+
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.admission-hero {
+  position: relative;
+
+  min-height: 82vh;
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(42, 10, 20, 0.95),
+      rgba(128, 0, 32, 0.76),
+      rgba(80, 18, 32, 0.42)
+    ),
+    url("/admission-hero.png") center / cover no-repeat;
+
+  isolation: isolate;
+}
+
+
+.admission-hero-overlay {
+  position: absolute;
+  inset: 0;
+
+  background:
+    radial-gradient(
+      circle at 80% 45%,
+      rgba(212, 175, 55, 0.18),
+      transparent 38%
+    );
+
+  pointer-events: none;
+}
+
+
+.admission-hero-content {
+  position: relative;
+  z-index: 2;
+
+  width: min(1180px, 90%);
+
+  margin: 0 auto;
+
+  padding: 120px 0 90px;
+}
+
+
+.admission-eyebrow {
+  display: inline-block;
+
+  margin-bottom: 20px;
+
+  color: #d4af37;
+
+  font-size: 0.8rem;
+  font-weight: 800;
+
+  letter-spacing: 3px;
+}
+
+
+.admission-hero-content h1 {
+  margin: 0 0 25px;
+
+  color: #ffffff;
+
+  font-family: Georgia, "Times New Roman", serif;
+
+  font-size: clamp(3rem, 7vw, 6.2rem);
+
+  line-height: 0.98;
+}
+
+
+.admission-hero-content h1 span {
+  color: #d4af37;
+}
+
+
+.admission-hero-content p {
+  max-width: 680px;
+
+  margin: 0 0 35px;
+
+  color: rgba(255, 255, 255, 0.87);
+
+  font-size: 1.05rem;
+
+  line-height: 1.8;
+}
+
+
+.admission-hero-btn {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  min-height: 52px;
+
+  padding: 0 32px;
+
+  border: 1px solid #d4af37;
+
+  background: #d4af37;
+
+  color: #3b101b;
+
+  text-decoration: none;
+
+  font-size: 0.9rem;
+  font-weight: 800;
+
+  letter-spacing: 1px;
+
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease,
+    color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+
+.admission-hero-btn:hover {
+  transform: translateY(-4px);
+
+  background: transparent;
+
+  color: #ffffff;
+
+  box-shadow:
+    0 0 15px rgba(212, 175, 55, 0.6),
+    0 0 30px rgba(212, 175, 55, 0.2);
+}
+
+
+/* =========================================================
+   CONTAINER
+   ========================================================= */
+
+.admission-container {
+  width: min(1180px, 90%);
+
+  margin: 0 auto;
+}
+
+
+/* =========================================================
+   INTRO
+   ========================================================= */
+
+.admission-intro {
+  padding: 110px 0;
+
+  background: #f8f3e8;
+}
+
+
+.admission-heading {
+  max-width: 800px;
+
+  margin: 0 auto 65px;
+
+  text-align: center;
+}
+
+
+.admission-heading > span,
+.form-section-heading > span,
+.process-heading > span,
+.admission-cta-content > span {
+  color: #800020;
+
+  font-size: 0.78rem;
+  font-weight: 800;
+
+  letter-spacing: 3px;
+}
+
+
+.admission-heading h2,
+.form-section-heading h2,
+.process-heading h2 {
+  margin: 14px 0;
+
+  color: #3b101b;
+
+  font-family: Georgia, "Times New Roman", serif;
+
+  font-size: clamp(2.2rem, 4vw, 4rem);
+
+  line-height: 1.1;
+}
+
+
+.admission-heading-line {
+  width: 70px;
+  height: 3px;
+
+  margin: 22px auto;
+
+  background: #d4af37;
+}
+
+
+.admission-heading p {
+  margin: 0;
+
+  color: #685b54;
+
+  line-height: 1.8;
+}
+
+
+/* =========================================================
+   BENEFITS
+   ========================================================= */
+
+.admission-benefits {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 25px;
+}
+
+
+.admission-benefit-card {
+  position: relative;
+
+  padding: 38px 32px;
+
+  background: #ffffff;
+
+  border: 1px solid rgba(128, 0, 32, 0.12);
+
+  box-shadow:
+    0 18px 50px rgba(59, 16, 27, 0.07);
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+
+.admission-benefit-card:hover {
+  transform: translateY(-7px);
+
+  box-shadow:
+    0 25px 60px rgba(59, 16, 27, 0.13);
+}
+
+
+.benefit-number {
+  margin-bottom: 22px;
+
+  color: #d4af37;
+
+  font-size: 0.8rem;
+  font-weight: 800;
+
+  letter-spacing: 3px;
+}
+
+
+.admission-benefit-card h3 {
+  margin: 0 0 12px;
+
+  color: #3b101b;
+
+  font-family: Georgia, "Times New Roman", serif;
+
+  font-size: 1.35rem;
+}
+
+
+.admission-benefit-card p {
+  margin: 0;
+
+  color: #6d6059;
+
+  font-size: 0.92rem;
+
+  line-height: 1.75;
+}
+
+
+/* =========================================================
+   FORM SECTION
+   ========================================================= */
+
+.admission-form-section {
+  padding: 110px 0;
+
+  background:
+    linear-gradient(
+      135deg,
+      #3b101b,
+      #800020
+    );
+}
+
+
+.form-section-heading {
+  max-width: 800px;
+
+  margin: 0 auto 50px;
+
+  text-align: center;
+}
+
+
+.form-section-heading > span {
+  color: #d4af37;
+}
+
+
+.form-section-heading h2 {
+  color: #ffffff;
+}
+
+
+.form-section-heading p {
+  margin: 0;
+
+  color: rgba(255, 255, 255, 0.76);
+
+  line-height: 1.8;
+}
+
+
+/* =========================================================
+   GOOGLE FORM
+   ========================================================= */
+
+.google-form-wrapper {
+  width: min(850px, 100%);
+
+  margin: 0 auto;
+
+  overflow: hidden;
+
+  background: #ffffff;
+
+  border: 1px solid rgba(212, 175, 55, 0.3);
+
+  box-shadow:
+    0 30px 80px rgba(20, 4, 10, 0.3);
+}
+
+
+.google-form-header {
+  display: flex;
+
+  align-items: center;
+
+  gap: 16px;
+
+  padding: 25px 30px;
+
+  border-bottom: 1px solid #eeeeee;
+
+  background: #ffffff;
+}
+
+
+.google-form-icon {
+  width: 45px;
+  height: 45px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 8px;
+
+  background: #800020;
+
+  color: #ffffff;
+
+  font-weight: 800;
+
+  font-size: 1.2rem;
+}
+
+
+.google-form-header h3 {
+  margin: 0 0 4px;
+
+  color: #3b101b;
+
+  font-family: Georgia, "Times New Roman", serif;
+
+  font-size: 1.15rem;
+}
+
+
+.google-form-header p {
+  margin: 0;
+
+  color: #777;
+
+  font-size: 0.8rem;
+}
+
+
+.google-form-container {
+  width: 100%;
+
+  min-height: 850px;
+
+  background: #ffffff;
+}
+
+
+.google-form-iframe {
+  display: block;
+
+  width: 100%;
+
+  min-height: 850px;
+
+  border: 0;
+}
+
+
+/* =========================================================
+   PROCESS
+   ========================================================= */
+
+.admission-process {
+  padding: 110px 0;
+
+  background: #f8f3e8;
+}
+
+
+.process-heading {
+  margin-bottom: 60px;
+
+  text-align: center;
+}
+
+
+.process-heading h2 {
+  margin-bottom: 0;
+}
+
+
+.process-grid {
+  display: grid;
+
+  grid-template-columns: repeat(4, 1fr);
+
+  gap: 25px;
+}
+
+
+.process-item {
+  padding: 35px 25px;
+
+  text-align: center;
+
+  background: #ffffff;
+
+  border: 1px solid rgba(128, 0, 32, 0.1);
+}
+
+
+.process-icon {
+  width: 55px;
+  height: 55px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  margin: 0 auto 22px;
+
+  border: 1px solid #d4af37;
+
+  color: #800020;
+
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+
+.process-item h3 {
+  margin: 0 0 12px;
+
+  color: #3b101b;
+
+  font-family: Georgia, "Times New Roman", serif;
+
+  font-size: 1.2rem;
+}
+
+
+.process-item p {
+  margin: 0;
+
+  color: #6d6059;
+
+  font-size: 0.88rem;
+
+  line-height: 1.7;
+}
+
+
+/* =========================================================
+   CTA
+   ========================================================= */
+
+.admission-cta {
+  padding: 110px 20px;
+
+  text-align: center;
+
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(212, 175, 55, 0.12),
+      transparent 42%
+    ),
+    #ffffff;
+}
+
+
+.admission-cta-content {
+  max-width: 750px;
+
+  margin: 0 auto;
+}
+
+
+.admission-cta-content h2 {
+  margin: 15px 0;
+
+  color: #3b101b;
+
+  font-family: Georgia, "Times New Roman", serif;
+
+  font-size: clamp(2.3rem, 5vw, 4rem);
+}
+
+
+.admission-cta-content p {
+  margin: 0 auto 30px;
+
+  color: #685b54;
+
+  line-height: 1.8;
+}
+
+
+.admission-cta-buttons {
+  display: flex;
+
+  justify-content: center;
+
+  gap: 15px;
+
+  flex-wrap: wrap;
+}
+
+
+.admission-contact-btn,
+.admission-form-btn {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  min-height: 52px;
+
+  padding: 0 30px;
+
+  text-decoration: none;
+
+  font-size: 0.88rem;
+  font-weight: 800;
+
+  letter-spacing: 1px;
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    background 0.3s ease;
+}
+
+
+.admission-contact-btn {
+  border: 1px solid #800020;
+
+  background: #800020;
+
+  color: #ffffff;
+}
+
+
+.admission-form-btn {
+  border: 1px solid #d4af37;
+
+  background: #d4af37;
+
+  color: #3b101b;
+}
+
+
+.admission-contact-btn:hover,
+.admission-form-btn:hover {
+  transform: translateY(-4px);
+
+  box-shadow:
+    0 12px 30px rgba(59, 16, 27, 0.16);
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 950px) {
+
+  .admission-benefits {
+    grid-template-columns: 1fr;
+  }
+
+
+  .process-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+  .admission-hero {
+    min-height: 82vh;
+
+    background-position: center;
+
+    background-attachment: scroll;
+  }
+
+
+  .admission-hero-content {
+    width: 88%;
+
+    padding: 100px 0 70px;
+  }
+
+
+  .admission-eyebrow {
+    font-size: 0.68rem;
+
+    letter-spacing: 2px;
+  }
+
+
+  .admission-hero-content h1 {
+    font-size: clamp(2.8rem, 13vw, 4.2rem);
+  }
+
+
+  .admission-hero-content p {
+    font-size: 0.95rem;
+
+    line-height: 1.7;
+  }
+
+
+  .admission-hero-btn {
+    width: 100%;
+  }
+
+
+  .admission-intro {
+    padding: 75px 0;
+  }
+
+
+  .admission-container {
+    width: 88%;
+  }
+
+
+  .admission-heading {
+    margin-bottom: 45px;
+  }
+
+
+  .admission-heading h2,
+  .form-section-heading h2,
+  .process-heading h2 {
+    font-size: 2.3rem;
+  }
+
+
+  .admission-benefit-card {
+    padding: 30px 25px;
+  }
+
+
+  .admission-form-section {
+    padding: 75px 0;
+  }
+
+
+  .google-form-header {
+    padding: 20px;
+  }
+
+
+  .google-form-container,
+  .google-form-iframe {
+    min-height: 900px;
+  }
+
+
+  .admission-process {
+    padding: 75px 0;
+  }
+
+
+  .process-grid {
+    grid-template-columns: 1fr;
+  }
+
+
+  .admission-cta {
+    padding: 75px 20px;
+  }
+
+
+  .admission-cta-content h2 {
+    font-size: 2.4rem;
+  }
+
+
+  .admission-cta-buttons {
+    flex-direction: column;
+  }
+
+
+  .admission-contact-btn,
+  .admission-form-btn {
+    width: 100%;
+  }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 380px) {
+
+  .admission-hero-content h1 {
+    font-size: 2.5rem;
+  }
+
+
+  .admission-benefit-card {
+    padding: 25px 20px;
+  }
+
+
+  .google-form-header {
+    align-items: flex-start;
+  }
+
+
+  .google-form-icon {
+    flex-shrink: 0;
+  }
+}
