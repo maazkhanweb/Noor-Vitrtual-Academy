@@ -142,7 +142,7 @@ function Admission() {
 
               <iframe
   title="Noor Virtual Academy Admission Form"
-  src="https://forms.gle/X6NDmECZD4BBp2xt6"
+  src="https://forms.gle/TvepQkYzujep6DPx7"
   className="google-form-iframe"
   loading="lazy"
 >

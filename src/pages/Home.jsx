@@ -100,22 +100,21 @@ const faqs = [
 const youtubeVideos = [
   {
     title: "Noor Virtual Academy Introduction",
-    videoId: "YOUR_VIDEO_ID_1",
+    videoId: "Y4Q2ZywO6Xs",
   },
   {
     title: "Quran Learning at NVA",
-    videoId: "YOUR_VIDEO_ID_2",
+    videoId: "GhmuL46HuZ8",
   },
   {
     title: "Online Quran Classes",
-    videoId: "YOUR_VIDEO_ID_3",
+    videoId: "4egLsiX1Sys",
   },
   {
     title: "Learn Quran with NVA",
-    videoId: "YOUR_VIDEO_ID_4",
+    videoId: "ZL7kp7zKAeE",
   },
 ];
-
 function Home() {
   const [openFaq, setOpenFaq] = useState(null);
 
