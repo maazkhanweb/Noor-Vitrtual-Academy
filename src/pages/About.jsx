@@ -8,9 +8,15 @@ function About() {
       {/* ================= HERO ================= */}
       <section className="about-hero">
 
-        <div className="about-hero-overlay"></div>
+  <img
+    src="/about-hero.png"
+    alt="Noor Virtual Academy"
+    className="about-hero-image"
+  />
 
-        <div className="about-hero-content">
+  <div className="about-hero-overlay"></div>
+
+  <div className="about-hero-content">
 
           <span className="about-eyebrow">
             ABOUT NOOR VIRTUAL ACADEMY

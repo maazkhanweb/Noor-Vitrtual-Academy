@@ -17,9 +17,15 @@ function Contact() {
       {/* ================= HERO ================= */}
       <section className="contact-hero">
 
-        <div className="contact-hero-overlay"></div>
+  <img
+    src="/contact-hero.png"
+    alt="Noor Virtual Academy"
+    className="contact-hero-image"
+  />
 
-        <div className="contact-hero-content">
+  <div className="contact-hero-overlay"></div>
+
+  <div className="contact-hero-content">
 
           <span className="contact-eyebrow">
             GET IN TOUCH

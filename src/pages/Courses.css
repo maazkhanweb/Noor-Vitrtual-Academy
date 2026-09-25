@@ -31,7 +31,7 @@
       rgba(128, 0, 32, 0.78),
       rgba(80, 18, 32, 0.38)
     ),
-    url("/courses-hero.jpg") center / cover no-repeat;
+    url("/courses-hero.png") center / cover no-repeat;
 
   isolation: isolate;
 }
