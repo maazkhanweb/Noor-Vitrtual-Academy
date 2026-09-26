@@ -47,19 +47,7 @@ function About() {
       </section>
 
 
-      {/* ================= ABOUT LEARNING BANNER ================= */}
-      <section className="about-learning-banner">
-
-        <div className="about-learning-banner-container">
-
-          <img
-            src="/about-learning-banner.png"
-            alt="Noor Virtual Academy Online Quran Learning"
-          />
-
-        </div>
-
-      </section>
+    
 
 
       {/* ================= ABOUT CONTENT ================= */}

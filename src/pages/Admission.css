@@ -72,7 +72,7 @@
 
   color: #d4af37;
 
-  font-size: 0.8rem;
+  font-size: 1.8rem;
   font-weight: 800;
 
   letter-spacing: 3px;
@@ -86,7 +86,7 @@
 
   font-family: Georgia, "Times New Roman", serif;
 
-  font-size: clamp(3rem, 7vw, 6.2rem);
+  font-size: clamp(3rem, 5vw, 4.2rem);
 
   line-height: 0.98;
 }

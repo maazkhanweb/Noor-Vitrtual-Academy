@@ -251,10 +251,7 @@ function Home() {
               </div>
             </div>
 
-            <div className="experience-badge">
-              <strong>100%</strong>
-              <span>Online Learning</span>
-            </div>
+            
           </div>
 
           <div className="welcome-content">

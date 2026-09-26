@@ -49,13 +49,14 @@ function Navbar() {
             onClick={closeMenu}
           >
             <img
-             src="/images/logo.png"
+              src="/images/logo.png"
               alt="Noor Virtual Academy"
               className="navbar-logo-image"
             />
           </Link>
 
-          {/* ================= DESKTOP NAV ================= */}
+
+          {/* ================= DESKTOP NAVIGATION ================= */}
           <div className="desktop-navigation">
 
             <div className="nav-links">
@@ -75,16 +76,19 @@ function Navbar() {
 
             </div>
 
-            {/* BOOK FREE TRIAL */}
-            <Link
-              to="/admission"
-              className="navbar-trial-button"
-            >
-              <span>Book Free Trial</span>
-              <span className="trial-arrow">→</span>
-            </Link>
-
           </div>
+
+
+          {/* ================= BOOK FREE TRIAL ================= */}
+          <Link
+            to="/admission"
+            className="navbar-trial-button"
+            onClick={closeMenu}
+          >
+            <span>Book Free Trial</span>
+            <span className="trial-arrow">→</span>
+          </Link>
+
 
           {/* ================= MOBILE MENU BUTTON ================= */}
           <button
@@ -102,6 +106,7 @@ function Navbar() {
           </button>
 
         </div>
+
 
         {/* ================= MOBILE NAVIGATION ================= */}
         <div
@@ -128,12 +133,14 @@ function Navbar() {
               </NavLink>
             ))}
 
+
+            {/* MOBILE FREE TRIAL */}
             <Link
               to="/admission"
               className="mobile-trial-button"
               onClick={closeMenu}
             >
-              Book Free Trial
+              <span>Book Free Trial</span>
               <span>→</span>
             </Link>
 
