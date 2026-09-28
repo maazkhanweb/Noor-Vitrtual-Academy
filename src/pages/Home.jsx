@@ -135,14 +135,12 @@ function Home() {
             </span>
 
             <h1>
-              Learn Quran.
-              <span> Build Character.</span>
+              Learn Quran
+              <span> Build Character</span>
             </h1>
 
             <p className="hero-description">
-              A professional online Quran academy helping students learn
-              Quran, Tajweed and Islamic studies from the comfort of their
-              homes.
+              A professional online Quran academy from Pakistan helping Muslim students worldwide learn Quran, Tajweed, and Islamic studies.
             </p>
 
             <div className="hero-buttons">

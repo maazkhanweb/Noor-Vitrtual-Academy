@@ -89,11 +89,11 @@ function Founder() {
               <div className="founder-photo-caption">
 
                 <strong>
-                  Name Here
+                  Molana Hafiz Shah Rafiuddin
                 </strong>
 
                 <span>
-                  Founder & Coordinator
+                  Founder & Director
                 </span>
 
               </div>

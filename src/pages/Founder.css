@@ -17,7 +17,7 @@
 
 .founder-hero {
   position: relative;
-  min-height: 52vh;
+  min-height: 87vh;
 
   display: flex;
   align-items: center;
@@ -52,7 +52,7 @@
   position: relative;
   z-index: 2;
 
-  width: min(1180px, 90%);
+  width: min(1080px, 87%);
   margin: 0 auto;
 
   padding: 70px 0 60px;
