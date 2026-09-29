@@ -2,6 +2,20 @@ import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import "./Home.css";
 
+/* ================= HERO ROTATING WORDS ================= */
+
+const rotatingWords = [
+  "Trusted",
+  "Inspiring",
+  "Professional",
+  "Innovative",
+  "Reliable",
+  "Successful",
+  "Prosperous",
+  "Excellence-driven",
+  "Student-focused",
+  "Future-oriented",
+];
 const whyChooseUs = [
   {
     icon: "🎓",
@@ -126,6 +140,23 @@ const youtubeVideos = [
 function Home() {
   const [openFaq, setOpenFaq] = useState(null);
 
+  /* ================= HERO ROTATING WORD ================= */
+
+  const [rotatingWordIndex, setRotatingWordIndex] = useState(0);
+
+  useEffect(() => {
+    const wordInterval = setInterval(() => {
+      setRotatingWordIndex(
+        (currentIndex) =>
+          (currentIndex + 1) % rotatingWords.length
+      );
+    }, 2800);
+
+    return () => clearInterval(wordInterval);
+  }, []);
+
+  const rotatingWord = rotatingWords[rotatingWordIndex];
+
   /* ================= COUNTING STATS ================= */
 
   const [statValues, setStatValues] = useState(
@@ -214,10 +245,16 @@ function Home() {
               NOOR VIRTUAL ACADEMY
             </span>
 
-            <h1>
-              Learn Quran
-              <span> Build Character</span>
-            </h1>
+            <h1 className="hero-statement">
+ {" "}
+  <span
+    key={rotatingWord}
+    className="hero-changing-word"
+  >
+    {rotatingWord}
+  </span>{" "}
+                      
+</h1>
 
             <p className="hero-description">
               A professional online Quran academy from Pakistan helping
