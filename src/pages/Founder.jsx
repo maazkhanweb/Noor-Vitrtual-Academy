@@ -240,7 +240,7 @@ function Founder() {
             <div className="founder-signature">
 
               <span>
-                Name Here
+                Molana Hafiz Shah Rafiuddin
               </span>
 
               <small>
