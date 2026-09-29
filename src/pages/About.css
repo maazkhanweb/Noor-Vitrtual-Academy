@@ -840,3 +840,68 @@
     border-bottom: none;
   }
 }
+/* =========================================================
+   ABOUT STATS - FORCE VISIBLE COLORS
+   ========================================================= */
+
+.about-page .about-stats .stat-item {
+  position: relative;
+  z-index: 2;
+  background: #ffffff;
+}
+
+.about-page .about-stats .stat-item strong {
+  display: block !important;
+  color: #800020 !important;
+  font-family: Georgia, "Times New Roman", serif !important;
+  font-size: 2.4rem !important;
+  font-weight: 700 !important;
+  line-height: 1.2 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  text-shadow: none !important;
+  -webkit-text-fill-color: #800020 !important;
+}
+
+.about-page .about-stats .stat-item span {
+  display: block !important;
+  margin-top: 8px !important;
+  color: #493d39 !important;
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-size: 0.9rem !important;
+  font-weight: 700 !important;
+  line-height: 1.5 !important;
+  letter-spacing: 0.5px !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  text-shadow: none !important;
+  -webkit-text-fill-color: #493d39 !important;
+}
+
+/* Hover/selection ke waqt bhi same color */
+.about-page .about-stats .stat-item strong::selection,
+.about-page .about-stats .stat-item span::selection {
+  background: #800020;
+  color: #ffffff;
+  -webkit-text-fill-color: #ffffff;
+}
+
+/* =========================================================
+   MOBILE STATS
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+  .about-page .about-stats .stat-item strong {
+    font-size: 1.8rem !important;
+    color: #800020 !important;
+    -webkit-text-fill-color: #800020 !important;
+  }
+
+  .about-page .about-stats .stat-item span {
+    font-size: 0.78rem !important;
+    color: #493d39 !important;
+    -webkit-text-fill-color: #493d39 !important;
+  }
+
+}

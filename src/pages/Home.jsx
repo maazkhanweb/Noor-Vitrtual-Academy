@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import "./Home.css";
 
@@ -35,22 +35,29 @@ const whyChooseUs = [
   },
 ];
 
+/* ================= STATS ================= */
+
 const stats = [
   {
-    number: "100+",
+    target: 100,
+    suffix: "+",
     label: "Students",
   },
   {
-    number: "20+",
+    target: 20,
+    suffix: "+",
     label: "Qualified Teachers",
   },
   {
-    number: "10+",
+    target: 10,
+    suffix: "+",
     label: "Courses",
   },
   {
-    number: "24/7",
+    target: null,
+    suffix: "",
     label: "Global Support",
+    staticValue: "24/7",
   },
 ];
 
@@ -115,21 +122,94 @@ const youtubeVideos = [
     videoId: "ZL7kp7zKAeE",
   },
 ];
+
 function Home() {
   const [openFaq, setOpenFaq] = useState(null);
+
+  /* ================= COUNTING STATS ================= */
+
+  const [statValues, setStatValues] = useState(
+    stats.map((stat) => (stat.target !== null ? 0 : stat.staticValue))
+  );
+
+  const statsRef = useRef(null);
+  const hasAnimated = useRef(false);
 
   const toggleFaq = (index) => {
     setOpenFaq(openFaq === index ? null : index);
   };
 
+  useEffect(() => {
+    const statsElement = statsRef.current;
+
+    if (!statsElement) return;
+
+    const startCounting = () => {
+      if (hasAnimated.current) return;
+
+      hasAnimated.current = true;
+
+      const duration = 1800;
+      const startTime = performance.now();
+
+      const animateNumbers = (currentTime) => {
+        const progress = Math.min(
+          (currentTime - startTime) / duration,
+          1
+        );
+
+        const easedProgress =
+          1 - Math.pow(1 - progress, 3);
+
+        setStatValues(
+          stats.map((stat) => {
+            if (stat.target === null) {
+              return stat.staticValue;
+            }
+
+            return Math.floor(stat.target * easedProgress);
+          })
+        );
+
+        if (progress < 1) {
+          requestAnimationFrame(animateNumbers);
+        }
+      };
+
+      requestAnimationFrame(animateNumbers);
+    };
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          startCounting();
+          observer.disconnect();
+        }
+      },
+      {
+        threshold: 0.35,
+      }
+    );
+
+    observer.observe(statsElement);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
   return (
     <main className="home-page">
+
       {/* ================= HERO ================= */}
+
       <section className="home-hero">
         <div className="hero-pattern"></div>
 
         <div className="home-container hero-container">
+
           <div className="hero-content">
+
             <span className="hero-small-title">
               NOOR VIRTUAL ACADEMY
             </span>
@@ -140,21 +220,32 @@ function Home() {
             </h1>
 
             <p className="hero-description">
-              A professional online Quran academy from Pakistan helping Muslim students worldwide learn Quran, Tajweed, and Islamic studies.
+              A professional online Quran academy from Pakistan helping
+              Muslim students worldwide learn Quran, Tajweed, and
+              Islamic studies.
             </p>
 
             <div className="hero-buttons">
-              <Link to="/admission" className="primary-button">
+
+              <Link
+                to="/admission"
+                className="primary-button"
+              >
                 Book Free Trial
                 <span>→</span>
               </Link>
 
-              <Link to="/courses" className="secondary-button">
+              <Link
+                to="/courses"
+                className="secondary-button"
+              >
                 Explore Courses
               </Link>
+
             </div>
 
             <div className="hero-features">
+
               <div>
                 <span>✓</span>
                 Qualified Teachers
@@ -169,12 +260,18 @@ function Home() {
                 <span>✓</span>
                 Learn From Anywhere
               </div>
+
             </div>
+
           </div>
 
+          {/* ================= HERO IMAGES ================= */}
+
           <div className="hero-visual">
+
             <div className="arch arch-one">
               <div className="arch-image">
+
                 <img
                   src="/images/home-quran.png"
                   alt="Quran learning"
@@ -187,11 +284,13 @@ function Home() {
                   <span>۞</span>
                   <p>Quran Learning</p>
                 </div>
+
               </div>
             </div>
 
             <div className="arch arch-two">
               <div className="arch-image">
+
                 <img
                   src="/images/home-teacher.png"
                   alt="Qualified Quran teacher"
@@ -204,11 +303,13 @@ function Home() {
                   <span>✦</span>
                   <p>Qualified Teachers</p>
                 </div>
+
               </div>
             </div>
 
             <div className="arch arch-three">
               <div className="arch-image">
+
                 <img
                   src="/images/home-student.png"
                   alt="Online Quran student"
@@ -221,20 +322,28 @@ function Home() {
                   <span>☾</span>
                   <p>Online Learning</p>
                 </div>
+
               </div>
             </div>
 
             <div className="hero-gold-circle circle-one"></div>
             <div className="hero-gold-circle circle-two"></div>
+
           </div>
+
         </div>
       </section>
 
       {/* ================= WELCOME ================= */}
+
       <section className="welcome-section">
+
         <div className="home-container welcome-grid">
+
           <div className="welcome-image">
+
             <div className="welcome-image-frame">
+
               <img
                 src="/images/home-about.png"
                 alt="Noor Virtual Academy"
@@ -247,13 +356,16 @@ function Home() {
                 <span>ﷲ</span>
                 <p>Noor Virtual Academy</p>
               </div>
+
             </div>
 
-            
           </div>
 
           <div className="welcome-content">
-            <span className="section-label">WELCOME TO NVA</span>
+
+            <span className="section-label">
+              WELCOME TO NVA
+            </span>
 
             <h2>
               Bringing the Light of Quran
@@ -268,11 +380,12 @@ function Home() {
 
             <p>
               Through qualified teachers, flexible online classes and a
-              supportive learning environment, we aim to make Quran learning
-              convenient for families around the world.
+              supportive learning environment, we aim to make Quran
+              learning convenient for families around the world.
             </p>
 
             <div className="welcome-points">
+
               <div>
                 <span>✓</span>
                 Quran & Tajweed Education
@@ -292,20 +405,34 @@ function Home() {
                 <span>✓</span>
                 Global Online Access
               </div>
+
             </div>
 
-            <Link to="/about" className="text-button">
-              Discover Our Story <span>→</span>
+            <Link
+              to="/about"
+              className="text-button"
+            >
+              Discover Our Story
+              <span>→</span>
             </Link>
+
           </div>
+
         </div>
+
       </section>
 
       {/* ================= WHY CHOOSE US ================= */}
+
       <section className="why-section">
+
         <div className="home-container">
+
           <div className="section-heading">
-            <span className="section-label">WHY CHOOSE US</span>
+
+            <span className="section-label">
+              WHY CHOOSE US
+            </span>
 
             <h2>
               Why Choose Noor Virtual Academy?
@@ -315,47 +442,95 @@ function Home() {
               A learning experience designed around quality teaching,
               flexibility and the spiritual development of every student.
             </p>
+
           </div>
 
           <div className="why-grid">
+
             {whyChooseUs.map((item, index) => (
-              <article className="why-card" key={index}>
-                <div className="why-icon">{item.icon}</div>
+
+              <article
+                className="why-card"
+                key={index}
+              >
+
+                <div className="why-icon">
+                  {item.icon}
+                </div>
 
                 <span className="card-number">
                   0{index + 1}
                 </span>
 
-                <h3>{item.title}</h3>
+                <h3>
+                  {item.title}
+                </h3>
 
-                <p>{item.description}</p>
+                <p>
+                  {item.description}
+                </p>
 
                 <div className="card-line"></div>
+
               </article>
+
             ))}
+
           </div>
+
         </div>
+
       </section>
 
       {/* ================= STATS ================= */}
-      <section className="stats-section">
+
+      <section
+        className="stats-section"
+        ref={statsRef}
+      >
+
         <div className="stats-pattern"></div>
 
         <div className="home-container stats-grid">
+
           {stats.map((stat, index) => (
-            <div className="stat-item" key={index}>
-              <strong>{stat.number}</strong>
-              <span>{stat.label}</span>
+
+            <div
+              className="stat-item"
+              key={index}
+            >
+
+              <strong>
+
+                {stat.target === null
+                  ? statValues[index]
+                  : `${statValues[index]}${stat.suffix}`}
+
+              </strong>
+
+              <span>
+                {stat.label}
+              </span>
+
             </div>
+
           ))}
+
         </div>
+
       </section>
 
       {/* ================= QURAN QUOTE ================= */}
+
       <section className="quote-section">
+
         <div className="home-container">
+
           <div className="quote-card">
-            <div className="quote-decoration quote-left">❝</div>
+
+            <div className="quote-decoration quote-left">
+              ❝
+            </div>
 
             <span className="quote-arabic">
               وَقُلْ رَبِّ زِدْنِي عِلْمًا
@@ -369,135 +544,186 @@ function Home() {
               Surah Taha — 20:114
             </span>
 
-            <div className="quote-decoration quote-right">❞</div>
+            <div className="quote-decoration quote-right">
+              ❞
+            </div>
+
           </div>
+
         </div>
+
       </section>
 
       {/* ================= COURSES PREVIEW ================= */}
+
       <section className="home-courses-section">
+
         <div className="home-container">
+
           <div className="section-heading">
-            <span className="section-label">OUR PROGRAMS</span>
+
+            <span className="section-label">
+              OUR PROGRAMS
+            </span>
 
             <h2>
               Learn Quran With Purpose
             </h2>
 
             <p>
-              Explore our carefully structured Quran and Islamic education
-              programs.
+              Explore our carefully structured Quran and Islamic
+              education programs.
             </p>
+
           </div>
 
-       <div className="home-course-grid">
+          <div className="home-course-grid">
 
-  {/* ================= COURSE 1 ================= */}
-  <div className="home-course-card">
+            {/* COURSE 1 */}
 
-    <div className="home-course-image">
-      <img
-        src="/images/home-noorani-qaida.png"
-        alt="Noorani Qaida"
-      />
-    </div>
+            <div className="home-course-card">
 
-    <h3>Noorani Qaida</h3>
+              <div className="home-course-image">
 
-    <p>
-      Build a strong foundation in Quran reading and pronunciation.
-    </p>
+                <img
+                  src="/images/home-noorani-qaida.png"
+                  alt="Noorani Qaida"
+                />
 
-  </div>
+              </div>
 
+              <h3>
+                Noorani Qaida
+              </h3>
 
-  {/* ================= COURSE 2 ================= */}
-  <div className="home-course-card">
+              <p>
+                Build a strong foundation in Quran reading and pronunciation.
+              </p>
 
-    <div className="home-course-image">
-      <img
-        src="/images/home-quran-recitation.png"
-        alt="Quran Recitation"
-      />
-    </div>
+            </div>
 
-    <h3>Quran Recitation</h3>
+            {/* COURSE 2 */}
 
-    <p>
-      Improve your Quran reading with proper pronunciation and flow.
-    </p>
+            <div className="home-course-card">
 
-  </div>
+              <div className="home-course-image">
 
+                <img
+                  src="/images/home-quran-recitation.png"
+                  alt="Quran Recitation"
+                />
 
-  {/* ================= COURSE 3 ================= */}
-  <div className="home-course-card">
+              </div>
 
-    <div className="home-course-image">
-      <img
-        src="/images/home-tajweed.png"
-        alt="Tajweed Course"
-      />
-    </div>
+              <h3>
+                Quran Recitation
+              </h3>
 
-    <h3>Tajweed Course</h3>
+              <p>
+                Improve your Quran reading with proper pronunciation and flow.
+              </p>
 
-    <p>
-      Learn the rules of Tajweed for accurate and beautiful recitation.
-    </p>
+            </div>
 
-  </div>
+            {/* COURSE 3 */}
 
+            <div className="home-course-card">
 
-  {/* ================= COURSE 4 ================= */}
-  <div className="home-course-card">
+              <div className="home-course-image">
 
-    <div className="home-course-image">
-      <img
-        src="/images/home-islamic-studies.png"
-        alt="Islamic Studies"
-      />
-    </div>
+                <img
+                  src="/images/home-tajweed.png"
+                  alt="Tajweed Course"
+                />
 
-    <h3>Islamic Studies</h3>
+              </div>
 
-    <p>
-      Develop Islamic knowledge and understanding through structured
-      lessons.
-    </p>
+              <h3>
+                Tajweed Course
+              </h3>
 
-  </div>
+              <p>
+                Learn the rules of Tajweed for accurate and beautiful recitation.
+              </p>
 
-</div>
+            </div>
+
+            {/* COURSE 4 */}
+
+            <div className="home-course-card">
+
+              <div className="home-course-image">
+
+                <img
+                  src="/images/home-islamic-studies.png"
+                  alt="Islamic Studies"
+                />
+
+              </div>
+
+              <h3>
+                Islamic Studies
+              </h3>
+
+              <p>
+                Develop Islamic knowledge and understanding through
+                structured lessons.
+              </p>
+
+            </div>
+
+          </div>
 
           <div className="center-button">
-            <Link to="/courses" className="primary-button">
-              View All Courses <span>→</span>
+
+            <Link
+              to="/courses"
+              className="primary-button"
+            >
+              View All Courses
+              <span>→</span>
             </Link>
+
           </div>
+
         </div>
+
       </section>
 
       {/* ================= YOUTUBE ================= */}
+
       <section className="youtube-section">
+
         <div className="home-container">
+
           <div className="section-heading">
-            <span className="section-label">WATCH & LEARN</span>
+
+            <span className="section-label">
+              WATCH & LEARN
+            </span>
 
             <h2>
               Learn With Noor Virtual Academy
             </h2>
 
             <p>
-              Explore our educational videos and stay connected with our
-              learning community.
+              Explore our educational videos and stay connected with
+              our learning community.
             </p>
+
           </div>
 
           <div className="youtube-grid">
+
             {youtubeVideos.map((video, index) => (
-              <div className="youtube-card" key={index}>
+
+              <div
+                className="youtube-card"
+                key={index}
+              >
+
                 <div className="youtube-frame">
+
                   <iframe
                     src={`https://www.youtube.com/embed/${video.videoId}`}
                     title={video.title}
@@ -510,21 +736,33 @@ function Home() {
                     <span>▶</span>
                     <p>Add YouTube Video</p>
                   </div>
+
                 </div>
 
-                <h3>{video.title}</h3>
+                <h3>
+                  {video.title}
+                </h3>
+
               </div>
+
             ))}
+
           </div>
+
         </div>
+
       </section>
 
       {/* ================= CTA ================= */}
+
       <section className="home-cta-section">
+
         <div className="cta-pattern"></div>
 
         <div className="home-container home-cta-content">
+
           <div>
+
             <span className="section-label light-label">
               START YOUR JOURNEY
             </span>
@@ -534,61 +772,93 @@ function Home() {
             </h2>
 
             <p>
-              Take the first step towards a meaningful and convenient Quran
-              learning journey with Noor Virtual Academy.
+              Take the first step towards a meaningful and convenient
+              Quran learning journey with Noor Virtual Academy.
             </p>
+
           </div>
 
-          <Link to="/admission" className="gold-button">
+          <Link
+            to="/admission"
+            className="gold-button"
+          >
             Book Your Free Trial
             <span>→</span>
           </Link>
+
         </div>
+
       </section>
 
       {/* ================= FAQ ================= */}
-      <section className="faq-section">
-        <div className="home-container">
-          <div className="section-heading">
-            <span className="section-label">NEED HELP?</span>
 
-            <h2>Frequently Asked Questions</h2>
+      <section className="faq-section">
+
+        <div className="home-container">
+
+          <div className="section-heading">
+
+            <span className="section-label">
+              NEED HELP?
+            </span>
+
+            <h2>
+              Frequently Asked Questions
+            </h2>
 
             <p>
-              Find answers to some of the most common questions about Noor
-              Virtual Academy.
+              Find answers to some of the most common questions about
+              Noor Virtual Academy.
             </p>
+
           </div>
 
           <div className="faq-list">
+
             {faqs.map((faq, index) => (
+
               <div
                 className={`faq-item ${
                   openFaq === index ? "faq-open" : ""
                 }`}
                 key={index}
               >
+
                 <button
                   type="button"
                   className="faq-question"
                   onClick={() => toggleFaq(index)}
                   aria-expanded={openFaq === index}
                 >
-                  <span>{faq.question}</span>
+
+                  <span>
+                    {faq.question}
+                  </span>
 
                   <span className="faq-icon">
                     {openFaq === index ? "−" : "+"}
                   </span>
+
                 </button>
 
                 <div className="faq-answer">
-                  <p>{faq.answer}</p>
+
+                  <p>
+                    {faq.answer}
+                  </p>
+
                 </div>
+
               </div>
+
             ))}
+
           </div>
+
         </div>
+
       </section>
+
     </main>
   );
 }

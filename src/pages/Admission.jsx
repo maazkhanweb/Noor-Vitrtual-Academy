@@ -115,42 +115,21 @@ function Admission() {
           {/* ================= GOOGLE FORM ================= */}
           <div className="google-form-wrapper">
 
-            <div className="google-form-header">
+  <div className="google-form-container">
 
-              <div className="google-form-icon">
-                G
-              </div>
+    <iframe
+      title="Noor Virtual Academy Admission & Free Trial Form"
+      src="https://docs.google.com/forms/d/e/1FAIpQLScrFchMg5eeaedhlyzVgrugK3F4vGpyg9IkAIHwseTS2_1PLA/viewform?embedded=true"
+      className="google-form-iframe"
+      loading="lazy"
+      scrolling="no"
+    >
+      Loading…
+    </iframe>
 
-              <div>
-                <h3>Noor Virtual Academy</h3>
+  </div>
 
-                <p>
-                  Admission & Free Trial Form
-                </p>
-              </div>
-
-            </div>
-
-            <div className="google-form-container">
-
-              {/* =================================================
-                  GOOGLE FORM EMBED
-
-                  Later replace YOUR_FORM_ID with the actual
-                  Google Form ID.
-              ================================================= */}
-
-              <iframe
-  title="Noor Virtual Academy Admission Form"
-  src="https://forms.gle/TvepQkYzujep6DPx7"
-  className="google-form-iframe"
-  loading="lazy"
->
-  Loading…
-</iframe>
-
-            </div>
-          </div>
+</div>
 
         </div>
       </section>

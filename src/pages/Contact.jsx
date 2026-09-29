@@ -114,36 +114,31 @@ function Contact() {
 
             </a>
 
+           {/* ================= EMAIL ================= */}
+<a
+  href="https://mail.google.com/mail/?view=cm&fs=1&to=noorvirtualacademy123@gmail.com"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="contact-card"
+>
+  <div className="contact-card-icon email-icon">
+    <FaEnvelope />
+  </div>
 
-            {/* ================= EMAIL ================= */}
-            <a
-              href="mailto:noorvirtualacademy123@gmail.com"
-              className="contact-card"
-            >
+  <div className="contact-card-content">
+    <h3>
+      Email
+    </h3>
 
-              <div className="contact-card-icon email-icon">
-                <FaEnvelope />
-              </div>
+    <p>
+      Send us your questions or admission inquiries.
+    </p>
 
-              <div className="contact-card-content">
-
-                <h3>
-                  Email
-                </h3>
-
-                <p>
-                  Send us your questions or admission inquiries.
-                </p>
-
-                <span className="contact-card-link">
-                  Send an Email →
-                </span>
-
-              </div>
-
-            </a>
-
-
+    <span className="contact-card-link">
+      Send an Email →
+    </span>
+  </div>
+</a>
             {/* ================= WORKING HOURS ================= */}
             <div className="contact-card">
 
