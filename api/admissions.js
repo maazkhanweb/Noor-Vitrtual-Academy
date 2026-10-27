@@ -1,5 +1,5 @@
 import crypto from "node:crypto";
-import { getList, setList, dbConfigured, DB_ERROR } from "./_lib/db.js";
+import { getList, setList, dbConfigured, DB_ERROR, errMsg } from "./_lib/db.js";
 import { verifyRequest } from "./_lib/auth.js";
 
 const KEY = "nva:admissions";
@@ -50,6 +50,6 @@ export default async function handler(req, res) {
     }
     return res.status(405).json({ error: "Method not allowed" });
   } catch (err) {
-    return res.status(500).json({ error: err.message || "Server error" });
+    return res.status(500).json({ error: errMsg(err) });
   }
 }

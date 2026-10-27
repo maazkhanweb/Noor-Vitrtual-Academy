@@ -1,5 +1,5 @@
 import crypto from "node:crypto";
-import { getList, setList, dbConfigured, DB_ERROR } from "./db.js";
+import { getList, setList, dbConfigured, DB_ERROR, errMsg } from "./db.js";
 import { verifyRequest } from "./auth.js";
 
 const newId = () => crypto.randomBytes(6).toString("hex");
@@ -52,7 +52,7 @@ export function makeCrud({ key, fields, defaults }) {
 
       return res.status(405).json({ error: "Method not allowed" });
     } catch (err) {
-      return res.status(500).json({ error: err.message || "Server error" });
+      return res.status(500).json({ error: errMsg(err) });
     }
   };
 }
