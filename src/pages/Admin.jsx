@@ -279,7 +279,7 @@ function Admissions({ onAuthError }) {
 }
 
 /* ============================ PAGE ============================ */
-const TABS = ["Admissions", "Courses", "Teachers"];
+const TABS = ["Admissions", "Courses"];
 
 function Admin() {
   const [loggedIn, setLoggedIn] = useState(Boolean(getToken()));
@@ -332,31 +332,6 @@ function Admin() {
               <>
                 <strong>{c.number} {c.title}</strong>
                 <div className="admin-muted">{c.description}</div>
-              </>
-            )}
-          />
-        )}
-
-        {tab === "Teachers" && (
-          <CrudSection
-            title="Teachers"
-            endpoint="teachers"
-            onAuthError={logout}
-            emptyItem={{ name: "", qualification: "", subject: "", experience: "", bio: "", image: "" }}
-            fields={[
-              { name: "name", label: "Teacher Name", required: true },
-              { name: "subject", label: "Subject / Course" },
-              { name: "qualification", label: "Qualification" },
-              { name: "experience", label: "Experience (e.g. 5 years)" },
-              { name: "bio", label: "Short Bio", textarea: true },
-              { name: "image", label: "Photo path or URL", placeholder: "https://..." },
-            ]}
-            summary={(t) => (
-              <>
-                <strong>{t.name}</strong>
-                <div className="admin-muted">
-                  {[t.subject, t.qualification, t.experience].filter(Boolean).join(" • ")}
-                </div>
               </>
             )}
           />

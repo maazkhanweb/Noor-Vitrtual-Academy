@@ -50,14 +50,10 @@ function Courses() {
   ];
 
   const [courses, setCourses] = useState(defaultCourses);
-  const [teachers, setTeachers] = useState([]);
 
   useEffect(() => {
     api("courses")
       .then((list) => Array.isArray(list) && list.length && setCourses(list))
-      .catch(() => {});
-    api("teachers")
-      .then((list) => Array.isArray(list) && setTeachers(list))
       .catch(() => {});
   }, []);
 
@@ -191,44 +187,6 @@ function Courses() {
 
       </section>
 
-
-      {/* ================= TEACHERS ================= */}
-      {teachers.length > 0 && (
-        <section className="courses-teachers">
-          <div className="courses-container">
-            <div className="features-heading">
-              <span>OUR TEACHERS</span>
-              <h2>Meet Our Quran Teachers</h2>
-            </div>
-
-            <div className="teachers-grid">
-              {teachers.map((teacher) => (
-                <article className="teacher-card" key={teacher.id}>
-                  {teacher.image ? (
-                    <img
-                      src={teacher.image}
-                      alt={teacher.name}
-                      className="teacher-photo"
-                      onError={(event) => {
-                        event.currentTarget.style.display = "none";
-                      }}
-                    />
-                  ) : (
-                    <div className="teacher-photo teacher-initial">
-                      {teacher.name?.charAt(0)}
-                    </div>
-                  )}
-                  <h3>{teacher.name}</h3>
-                  {teacher.subject && <strong>{teacher.subject}</strong>}
-                  {teacher.qualification && <span>{teacher.qualification}</span>}
-                  {teacher.experience && <span>Experience: {teacher.experience}</span>}
-                  {teacher.bio && <p>{teacher.bio}</p>}
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
 
       {/* ================= FEATURES ================= */}
       <section className="courses-features">
