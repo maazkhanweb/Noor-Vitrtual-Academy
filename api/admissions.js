@@ -1,5 +1,5 @@
 import crypto from "node:crypto";
-import { getList, setList, dbConfigured } from "./_lib/db.js";
+import { getList, setList, dbConfigured, DB_ERROR } from "./_lib/db.js";
 import { verifyRequest } from "./_lib/auth.js";
 
 const KEY = "nva:admissions";
@@ -11,7 +11,7 @@ export default async function handler(req, res) {
   try {
     // PUBLIC: submit the admission form
     if (req.method === "POST") {
-      if (!dbConfigured()) return res.status(503).json({ error: "Database not configured" });
+      if (!dbConfigured()) return res.status(503).json({ error: DB_ERROR });
       const b = req.body || {};
       const entry = {
         id: crypto.randomBytes(6).toString("hex"),
@@ -37,7 +37,7 @@ export default async function handler(req, res) {
 
     // ADMIN ONLY: list / delete
     if (!verifyRequest(req)) return res.status(401).json({ error: "Unauthorized" });
-    if (!dbConfigured()) return res.status(503).json({ error: "Database not configured" });
+    if (!dbConfigured()) return res.status(503).json({ error: DB_ERROR });
 
     if (req.method === "GET") {
       return res.status(200).json((await getList(KEY)) ?? []);

@@ -1,5 +1,5 @@
 import crypto from "node:crypto";
-import { getList, setList, dbConfigured } from "./db.js";
+import { getList, setList, dbConfigured, DB_ERROR } from "./db.js";
 import { verifyRequest } from "./auth.js";
 
 const newId = () => crypto.randomBytes(6).toString("hex");
@@ -23,7 +23,7 @@ export function makeCrud({ key, fields, defaults }) {
 
       // ADMIN ONLY below
       if (!verifyRequest(req)) return res.status(401).json({ error: "Unauthorized" });
-      if (!dbConfigured()) return res.status(503).json({ error: "Database not configured" });
+      if (!dbConfigured()) return res.status(503).json({ error: DB_ERROR });
 
       let list = (await getList(key)) ?? [...defaults];
 
