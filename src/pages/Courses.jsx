@@ -1,8 +1,10 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { api } from "../api";
 import "./Courses.css";
 
 function Courses() {
-  const courses = [
+  const defaultCourses = [
     {
       number: "01",
       title: "Noorani Qaida",
@@ -46,6 +48,18 @@ function Courses() {
       image: "/images/course-sisters-classes.png",
     },
   ];
+
+  const [courses, setCourses] = useState(defaultCourses);
+  const [teachers, setTeachers] = useState([]);
+
+  useEffect(() => {
+    api("courses")
+      .then((list) => Array.isArray(list) && list.length && setCourses(list))
+      .catch(() => {});
+    api("teachers")
+      .then((list) => Array.isArray(list) && setTeachers(list))
+      .catch(() => {});
+  }, []);
 
   return (
     <main className="courses-page">
@@ -114,10 +128,10 @@ function Courses() {
           {/* ================= COURSE CARDS ================= */}
           <div className="courses-grid">
 
-            {courses.map((course) => (
+            {courses.map((course, index) => (
               <article
                 className="course-card"
-                key={course.number}
+                key={course.id || course.number}
               >
 
                 <div className="course-image-wrapper">
@@ -133,7 +147,7 @@ function Courses() {
 
                   <div className="course-image-placeholder">
                     <span>
-                      {course.number}
+                      {course.number || String(index + 1).padStart(2, "0")}
                     </span>
 
                     <p>
@@ -142,7 +156,7 @@ function Courses() {
                   </div>
 
                   <div className="course-number">
-                    {course.number}
+                    {course.number || String(index + 1).padStart(2, "0")}
                   </div>
 
                 </div>
@@ -177,6 +191,44 @@ function Courses() {
 
       </section>
 
+
+      {/* ================= TEACHERS ================= */}
+      {teachers.length > 0 && (
+        <section className="courses-teachers">
+          <div className="courses-container">
+            <div className="features-heading">
+              <span>OUR TEACHERS</span>
+              <h2>Meet Our Quran Teachers</h2>
+            </div>
+
+            <div className="teachers-grid">
+              {teachers.map((teacher) => (
+                <article className="teacher-card" key={teacher.id}>
+                  {teacher.image ? (
+                    <img
+                      src={teacher.image}
+                      alt={teacher.name}
+                      className="teacher-photo"
+                      onError={(event) => {
+                        event.currentTarget.style.display = "none";
+                      }}
+                    />
+                  ) : (
+                    <div className="teacher-photo teacher-initial">
+                      {teacher.name?.charAt(0)}
+                    </div>
+                  )}
+                  <h3>{teacher.name}</h3>
+                  {teacher.subject && <strong>{teacher.subject}</strong>}
+                  {teacher.qualification && <span>{teacher.qualification}</span>}
+                  {teacher.experience && <span>Experience: {teacher.experience}</span>}
+                  {teacher.bio && <p>{teacher.bio}</p>}
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* ================= FEATURES ================= */}
       <section className="courses-features">

@@ -1,0 +1,227 @@
+.admin-page,
+.admin-login-wrap {
+  min-height: 100vh;
+  background: #f8efe1;
+  color: #2d2020;
+}
+
+.admin-login-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.admin-login {
+  width: min(380px, 100%);
+  display: grid;
+  gap: 14px;
+  padding: 32px;
+  text-align: center;
+  background: #fff;
+  border-radius: 12px;
+  border-top: 5px solid #800020;
+  box-shadow: 0 25px 55px rgba(66, 30, 25, 0.15);
+}
+
+.admin-login img {
+  width: 120px;
+  margin: 0 auto;
+}
+
+.admin-login h1 {
+  margin: 0;
+  font-size: 22px;
+  color: #4a111f;
+}
+
+.admin-login input,
+.admin-edit input,
+.admin-edit textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 11px 12px;
+  font: inherit;
+  border: 1px solid rgba(128, 0, 32, 0.25);
+  border-radius: 8px;
+}
+
+.admin-login button[type="submit"] {
+  padding: 12px;
+  font: inherit;
+  font-weight: 700;
+  color: #fff;
+  cursor: pointer;
+  border: 0;
+  border-radius: 8px;
+  background: #800020;
+}
+
+.admin-error {
+  padding: 10px 14px;
+  border-radius: 8px;
+  color: #8a1c1c;
+  background: #fde8e8;
+  font-weight: 600;
+}
+
+.admin-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 28px;
+  color: #fff;
+  background: #800020;
+}
+
+.admin-top h1 {
+  margin: 0;
+  font-size: 20px;
+}
+
+.admin-tabs {
+  display: flex;
+  gap: 8px;
+  padding: 14px 28px 0;
+  flex-wrap: wrap;
+}
+
+.admin-tabs button {
+  padding: 10px 20px;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid rgba(128, 0, 32, 0.2);
+  border-radius: 8px 8px 0 0;
+  background: #fff;
+  color: #4a111f;
+}
+
+.admin-tabs button.active {
+  color: #fff;
+  background: #800020;
+}
+
+.admin-body {
+  padding: 0 28px 40px;
+}
+
+.admin-card {
+  padding: 22px;
+  background: #fff;
+  border-radius: 0 12px 12px 12px;
+  box-shadow: 0 15px 35px rgba(66, 30, 25, 0.09);
+}
+
+.admin-card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+.admin-card-head h2 {
+  margin: 0;
+  font-size: 19px;
+  color: #4a111f;
+}
+
+.admin-muted {
+  font-size: 14px;
+  color: #6d605b;
+}
+
+.admin-table-wrap {
+  overflow-x: auto;
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.admin-table.wide {
+  min-width: 980px;
+}
+
+.admin-table th,
+.admin-table td {
+  padding: 10px 12px;
+  text-align: left;
+  vertical-align: top;
+  font-size: 14px;
+  border-bottom: 1px solid rgba(128, 0, 32, 0.1);
+}
+
+.admin-table th {
+  color: #fff;
+  background: #800020;
+}
+
+.admin-actions {
+  white-space: nowrap;
+  text-align: right !important;
+}
+
+.btn {
+  padding: 8px 14px;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  color: #4a111f;
+  border: 1px solid rgba(128, 0, 32, 0.3);
+  border-radius: 8px;
+  background: #fff;
+}
+
+.btn.primary {
+  color: #fff;
+  border-color: #800020;
+  background: #800020;
+}
+
+.btn.danger {
+  color: #fff;
+  border-color: #b3261e;
+  background: #b3261e;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.admin-top .btn {
+  border-color: rgba(255, 255, 255, 0.5);
+  background: transparent;
+  color: #fff;
+}
+
+.admin-edit {
+  display: grid;
+  gap: 12px;
+  margin-bottom: 20px;
+  padding: 18px;
+  border-radius: 10px;
+  background: #fffaf0;
+  border: 1px solid rgba(169, 130, 47, 0.35);
+}
+
+.admin-edit h3 {
+  margin: 0;
+}
+
+.admin-edit label {
+  display: grid;
+  gap: 6px;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.admin-edit-actions {
+  display: flex;
+  gap: 10px;
+}

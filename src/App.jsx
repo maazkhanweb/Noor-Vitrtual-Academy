@@ -16,6 +16,7 @@ import Courses from "./pages/Courses";
 import Founder from "./pages/Founder";
 import Admission from "./pages/Admission";
 import Contact from "./pages/Contact";
+import Admin from "./pages/Admin";
 
 import "./App.css";
 
@@ -39,9 +40,19 @@ function ScrollToTop() {
   return null;
 }
 
-function App() {
+function AppLayout() {
+  const { pathname } = useLocation();
+
+  /* Admin panel has its own layout (no navbar / footer) */
+  if (pathname.startsWith("/admin")) {
+    return (
+      <Routes>
+        <Route path="/admin" element={<Admin />} />
+      </Routes>
+    );
+  }
+
   return (
-    <BrowserRouter>
       <div className="app">
 
         {/* ================= SCROLL TO TOP ================= */}
@@ -100,6 +111,13 @@ function App() {
         <WhatsAppButton />
 
       </div>
+  );
+}
+
+function App() {
+  return (
+    <BrowserRouter>
+      <AppLayout />
     </BrowserRouter>
   );
 }

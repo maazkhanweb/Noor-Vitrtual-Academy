@@ -1,7 +1,69 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
+import { api } from "../api";
 import "./Admission.css";
 
+const DAYS = [
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+  "Sunday",
+];
+
+const EMPTY_FORM = {
+  studentName: "",
+  guardianName: "",
+  guardianRelation: "",
+  email: "",
+  whatsapp: "",
+  applyFor: "",
+  days: [],
+};
+
 function Admission() {
+  const [form, setForm] = useState(EMPTY_FORM);
+  const [status, setStatus] = useState({ type: "", message: "" });
+  const [sending, setSending] = useState(false);
+
+  const update = (field) => (event) =>
+    setForm((f) => ({ ...f, [field]: event.target.value }));
+
+  const toggleDay = (day) =>
+    setForm((f) => ({
+      ...f,
+      days: f.days.includes(day)
+        ? f.days.filter((d) => d !== day)
+        : [...f.days, day],
+    }));
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    if (form.days.length === 0) {
+      setStatus({ type: "error", message: "Please select at least one preferred day." });
+      return;
+    }
+
+    setSending(true);
+    setStatus({ type: "", message: "" });
+
+    try {
+      await api("admissions", { method: "POST", body: form });
+      setForm(EMPTY_FORM);
+      setStatus({
+        type: "success",
+        message: "JazakAllah! Your application has been submitted. Our team will contact you soon.",
+      });
+    } catch (err) {
+      setStatus({ type: "error", message: err.message });
+    } finally {
+      setSending(false);
+    }
+  };
+
   return (
     <main className="admission-page">
 
@@ -107,29 +169,94 @@ function Admission() {
             <h2>Apply for Admission & Free Trial</h2>
 
             <p>
-              Please complete the form below. Your information will
-              be submitted directly through our Google Form.
+              Please complete the form below. Our team will contact
+              you after receiving your application.
             </p>
           </div>
 
-          {/* ================= GOOGLE FORM ================= */}
+          {/* ================= ADMISSION FORM ================= */}
           <div className="google-form-wrapper">
+            <form className="nva-form" onSubmit={handleSubmit}>
 
-  <div className="google-form-container">
+              <div className="nva-field">
+                <label htmlFor="studentName">Student Name *</label>
+                <input id="studentName" type="text" required maxLength={100}
+                  value={form.studentName} onChange={update("studentName")} />
+              </div>
 
-    <iframe
-      title="Noor Virtual Academy Admission & Free Trial Form"
-      src="https://docs.google.com/forms/d/e/1FAIpQLScrFchMg5eeaedhlyzVgrugK3F4vGpyg9IkAIHwseTS2_1PLA/viewform?embedded=true"
-      className="google-form-iframe"
-      loading="lazy"
-      scrolling="no"
-    >
-      Loading…
-    </iframe>
+              <div className="nva-field">
+                <label htmlFor="guardianName">Guardian Name *</label>
+                <input id="guardianName" type="text" required maxLength={100}
+                  value={form.guardianName} onChange={update("guardianName")} />
+              </div>
 
-  </div>
+              <div className="nva-field">
+                <label htmlFor="guardianRelation">Guardian Relation with Student *</label>
+                <input id="guardianRelation" type="text" required maxLength={60}
+                  placeholder="e.g. Father, Mother, Brother"
+                  value={form.guardianRelation} onChange={update("guardianRelation")} />
+              </div>
 
-</div>
+              <div className="nva-row">
+                <div className="nva-field">
+                  <label htmlFor="email">Email *</label>
+                  <input id="email" type="email" required maxLength={120}
+                    value={form.email} onChange={update("email")} />
+                </div>
+
+                <div className="nva-field">
+                  <label htmlFor="whatsapp">WhatsApp Number *</label>
+                  <input id="whatsapp" type="tel" required maxLength={30}
+                    placeholder="+92 300 1234567"
+                    value={form.whatsapp} onChange={update("whatsapp")} />
+                </div>
+              </div>
+
+              <fieldset className="nva-fieldset">
+                <legend>What would you like to apply for? *</legend>
+                {["Free Trial Classes", "Proper Admission"].map((option) => (
+                  <label className="nva-check" key={option}>
+                    <input
+                      type="radio"
+                      name="applyFor"
+                      value={option}
+                      required
+                      checked={form.applyFor === option}
+                      onChange={update("applyFor")}
+                    />
+                    <span>{option}</span>
+                  </label>
+                ))}
+              </fieldset>
+
+              <fieldset className="nva-fieldset">
+                <legend>Select your preferred days for Quran Classes *</legend>
+                <div className="nva-days">
+                  {DAYS.map((day) => (
+                    <label className="nva-check" key={day}>
+                      <input
+                        type="checkbox"
+                        checked={form.days.includes(day)}
+                        onChange={() => toggleDay(day)}
+                      />
+                      <span>{day}</span>
+                    </label>
+                  ))}
+                </div>
+              </fieldset>
+
+              {status.message && (
+                <div className={`nva-alert ${status.type}`} role="alert">
+                  {status.message}
+                </div>
+              )}
+
+              <button type="submit" className="nva-submit" disabled={sending}>
+                {sending ? "Submitting..." : "Submit Application"}
+              </button>
+
+            </form>
+          </div>
 
         </div>
       </section>
